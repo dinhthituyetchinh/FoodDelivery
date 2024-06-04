@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+  <style>
+  </style>
+</head>
+
+<body>
+    <textarea style="visibility: hidden;">bạn cần mua gì  </textarea>
+    <button>Speak</button>
+
+    <select id="voices">
+        <option value="">Chọn giọng nói</option>
+    </select>
+
+    <script>
+        let button = document.querySelector("button");
+        let text = document.querySelector("textarea");
+        let voiceSelect = document.querySelector("#voices");
+
+        function populateVoices() {
+            let voices = speechSynthesis.getVoices();
+            voiceSelect.innerHTML = "";
+            voices.forEach((voice) => {
+                let option = document.createElement("option");
+                option.textContent = `${voice.name} (${voice.lang})`;
+                option.setAttribute("data-lang", voice.lang);
+                option.setAttribute("data-name", voice.name);
+                voiceSelect.appendChild(option);
+            });
+        }
+
+        populateVoices();
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = populateVoices;
+        }
+
+        button.addEventListener("click", () => {
+            let utterance = new SpeechSynthesisUtterance(text.value);
+            let selectedVoice = "Microsoft Anna"; // Tên giọng mặc định là "Microsoft Anna"
+            let voices = speechSynthesis.getVoices();
+            voices.forEach((voice) => {
+                if (voice.name === selectedVoice) {
+                    utterance.voice = voice;
+                }
+            });
+            speechSynthesis.speak(utterance);
+        });
+    </script>
+</body>
+</html>
