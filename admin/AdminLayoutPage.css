@@ -1,0 +1,339 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* nav left */
+.containerAdmin {
+    position: relative;
+    width: 100%;
+}
+
+.navAdmin {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background-color: #dc3545;
+    border-left: 10px solid #dc3545;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+    .navAdmin ul {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+    }
+
+        .navAdmin ul li {
+            position: relative;
+            width: 200%;
+            list-style: none;
+        }
+
+            .navAdmin ul li:hover {
+                background-color: white;
+            }
+
+            .navAdmin ul li:nth-child(1) {
+                margin-bottom: 30px;
+                pointer-events: none;
+            }
+
+            .navAdmin ul li a {
+                position: relative;
+                display: block;
+                width: 100%;
+                display: flex;
+                text-decoration: none;
+                color: #ffff;
+            }
+
+            .navAdmin ul li:hover a {
+                color: #b02a37;
+            }
+
+            .navAdmin ul li a .icon {
+                position: relative;
+                display: block;
+                min-width: 60px;
+                height: 60px;
+                line-height: 70px;
+                text-align: center;
+            }
+
+                .navAdmin ul li a .icon i {
+                    font-size: 1.75em;
+                }
+
+            .navAdmin ul li a .title {
+                position: relative;
+                display: block;
+                padding: 0 10px;
+                height: 60px;
+                line-height: 60px;
+                text-align: start;
+                white-space: nowrap;
+            }
+
+/* 
+.nav ul li:hover a::before
+{
+    content: " ";
+    position: absolute;
+    right: 0px;
+    width: 50px;
+    height: 50px;
+    top:  -50px;
+    background: black;
+} */
+
+/* MAIN */
+.main {
+    position: absolute;
+    width: calc(100% - 200px);
+    left: 250px;
+    min-height: 100vh;
+    background-color: #ffff;
+    transition: 0.5s;
+}
+
+.top-nav {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.user {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .user img {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.card-boxAdmin {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 20px;
+}
+
+    .card-boxAdmin .cardAdmin {
+        width: 200px;
+        position: relative;
+        background-color: #ffff;
+        padding: 30px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        box-shadow: 0 7px 25px rgb(0,0,0,0.08);
+    }
+
+        .card-boxAdmin .cardAdmin .numbers {
+            position: relative;
+            font-weight: 300;
+            font-size: 30px;
+            color: #dc3545;
+        }
+
+        .card-boxAdmin .cardAdmin .card-name {
+            color: grey;
+            font-size: 1em;
+            margin-top: 5px;
+        }
+
+        .card-boxAdmin .cardAdmin .icon-card {
+            font-size: 2.5em;
+            color: grey;
+        }
+
+        .card-boxAdmin .cardAdmin:hover {
+            background: #dc3545;
+        }
+
+            .card-boxAdmin .cardAdmin:hover .numbers,
+            .card-boxAdmin .cardAdmin:hover .card-name,
+            .card-boxAdmin .cardAdmin:hover .icon-card {
+                color: #ffff;
+            }
+
+.mainAdd{
+    position: relative;
+    width: 90%;
+    margin-left: 20px;
+    padding: 15px;
+}
+
+/*Responsive design*/
+
+@media (max-width: 991px)
+{
+    .navAdmin 
+    {
+        left: -300px;
+    }
+    .navAdmin.active
+    {
+        width: 300px;
+        left:0;
+    }
+    .main
+    {
+        width: 100%;
+        left: 0;
+    }
+    .main.active
+    {
+        left: 300px;
+    }
+    .card-boxAdmin 
+    {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 768px)
+{
+    .navAdmin {
+        width: 100%;
+        left: -100%;
+    }
+
+    .navAdmin.active {
+        left: 0;
+    }
+
+    .main {
+        width: 100%;
+        left: 0;
+    }
+
+    .main.active {
+        left: 100%;
+    }
+
+    .card-boxAdmin {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .details
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .details .recentOrders
+    {
+        margin-left: 0px;
+
+    }
+}
+
+
+
+
+.details
+{
+    position: relative;
+    width: 100%;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px;
+    margin-top: 10px;
+}
+
+.details .recentOrders
+{
+    margin-left: 200px;
+    position: relative;
+    display: grid;
+    min-height: 500px;
+    background: #ffffff;
+    padding: 15px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    border-radius: 20px;
+}
+
+.cardHeader
+{
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-start;
+}
+
+.cardHeader h3 {
+    font-weight: 500;
+    color: #b02a37;
+
+}
+
+.details table
+{
+    width: 100%;
+    border-collapse:collapse;
+    margin-top: 10px;
+}
+.details table thead td
+{
+    font-weight: 600;
+    padding: 30px;
+}
+
+.details .recentOrders table thead tr 
+{
+    color: #dc3545;
+    border-bottom: 1px solid rgba(193, 36, 36);
+}
+
+.details .recentOrders table thead tr:last-child
+{
+    border-bottom: none;
+}
+    .details .recentOrders table thead tr:hover {
+        background: rgb(157, 62, 62);
+        color: white;
+    }
+.details .recentOrders table tbody tr:hover {
+    background: rgb(157, 62, 62);
+    color: white;
+}
+
+.details table tbody tr td
+{
+    padding: 15px;
+
+}
